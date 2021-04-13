@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewMode"
+            type="com.dzw.thinking.viewModel.MainVM" />
+
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".activity.MainV">
+
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switch_permissions"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:onClick="@{clickListener}"
+            android:padding="10dp"
+            android:text="悬浮权限"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switch_access"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:padding="10dp"
+            android:onClick="@{clickListener}"
+            android:text="辅助开关"
+            app:layout_constraintTop_toBottomOf="@id/switch_permissions" />
+
+        <Button
+            android:id="@+id/start_tik"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="启动抖音"
+            android:onClick="@{clickListener}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/switch_access"  />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
