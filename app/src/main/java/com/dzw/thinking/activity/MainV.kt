@@ -69,7 +69,7 @@ class MainV : AppCompatActivity(), View.OnClickListener {
                 AppUtils.startAccessAct(this)
             }
             R.id.start_tik -> {
-                if (!switch_access.isChecked && !switch_permissions.isChecked) {
+                if (!switch_access.isChecked || !switch_permissions.isChecked) {
                     Toast.makeText(this, "请打开所有开关", Toast.LENGTH_SHORT).show()
                     return
                 }
