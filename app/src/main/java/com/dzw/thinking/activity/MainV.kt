@@ -30,7 +30,7 @@ class MainV : AppCompatActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        LogDzw.init(false)
+//        LogDzw.init(false)
         setTitle(R.string.app_name)
         val dataBindingUtil: ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         dataBindingUtil.lifecycleOwner = this

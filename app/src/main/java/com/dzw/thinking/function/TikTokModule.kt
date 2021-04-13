@@ -65,13 +65,17 @@ class TikTokModule(private val myAccessibility: MyAccessibility) : IService {
                     if (isStart && className.contains("MainActivity")) {
                         val source = event.source
                         scopeEditText.launch {
-                            onFindComment(source)
-                            LogDzw.d(editTextInfo)
-                            editTextInfo?.let {
-                                /*自动评论*/
-                                handler.post { it.setEditText("你是最靓的仔") }
-                                delay(500)
-                                it.parent?.getChild(1)?.getChild(0)?.getChild(2)?.click()
+                            try {
+                                onFindComment(source)
+                                LogDzw.d(editTextInfo)
+                                editTextInfo?.let {
+                                    /*自动评论*/
+                                    handler.post { it.setEditText("你是最靓的仔") }
+                                    delay(500)
+                                    it.parent?.getChild(1)?.getChild(0)?.getChild(2)?.click()
+                                }
+                            } catch (e: Exception) {
+                                e.printStackTrace()
                             }
                             /*评论完成返回*/
                             delay(100)
@@ -254,11 +258,11 @@ class TikTokModule(private val myAccessibility: MyAccessibility) : IService {
     }
 
     private fun getRandTime() {
-        delayTime = (Random.nextInt(30) + 6).toLong()
+        delayTime = (Random.nextInt(20) + 6).toLong()
         LogDzw.d("delayTime:   $delayTime")
     }
 
-    companion  object  {
+    companion object {
         val tikTokPackageName = "com.ss.android.ugc.aweme"
     }
 }

@@ -4,6 +4,14 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
+    signingConfigs {
+        key {
+            storeFile file('E:\\key\\functionkey.jks')
+            storePassword 'aaa111!!!'
+            keyAlias 'dzw'
+            keyPassword 'aaa111!!!'
+        }
+    }
     compileSdkVersion 30
     buildToolsVersion '30.0.3'
     defaultConfig {
@@ -27,9 +35,13 @@ android {
         jvmTarget = "1.8"
     }
     buildTypes {
+        debug{
+            signingConfig signingConfigs.key
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.key
         }
     }
 }
